@@ -45,7 +45,7 @@ sudo python3.5 get-pip.py
 rm get-pip.py
 sudo apt-get -y install build-essential
 sudo python3.5 -m easy_install pyzmq hiredis
-sudo python3.5 -m pip -r minqlx/plugins/requirements.txt
+sudo python3.5 -m pip install -r minqlx/plugins/requirements.txt
 ```
 
 - You now need to configure both the config in `qlds/minqlx/config.cfg` and Redis.
@@ -54,13 +54,16 @@ make sure you add your SteamID64 (there are converters out there, just google it
 to the `Owner` field in the config, otherwise you won't be able to execute any
 admin commands, since it won't know you are the owner of it.
 
+- You're almost there. Now simply edit the scripts you use to launch the server, but
+make it point to `run_server_x64_minqlx.sh` instead of `run_server_x64.sh`.
+
 Compiling
 =========
 It's just a makefile for now. No autoconf or anything, so you might need to edit the file in some cases.
 It assumes you have GCC and that `python3.5-config` is Python 3.5's python-config. On Debian, install
 `python3.5-dev` and it should compile right off the bat assuming you have all the build tools.
 
-To compile, just do a `make` and you should get a `minqlx.so`. If you do not want to use this without
+To compile, just do a `make` and you should get a `minqlx.so`. If you do not want to use this with
 Python, you can compile it with `make nopy` and you should get a `minqlx_nopy.so`.
 
 Contribute
